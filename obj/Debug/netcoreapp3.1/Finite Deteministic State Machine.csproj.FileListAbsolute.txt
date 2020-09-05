@@ -1,0 +1,13 @@
+F:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.exe
+F:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.deps.json
+F:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.runtimeconfig.json
+F:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.runtimeconfig.dev.json
+F:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.dll
+F:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.pdb
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.csprojAssemblyReference.cache
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.AssemblyInfoInputs.cache
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.AssemblyInfo.cs
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.csproj.CoreCompileInputs.cache
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.dll
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.pdb
+F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.genruntimeconfig.cache
