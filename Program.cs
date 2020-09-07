@@ -98,7 +98,7 @@ namespace Finite_Deteministic_State_Machine
             //Example: Creating a state machine that checks if a word contains oop
 
             //We use a string with all letters to loop through the "everything but this letter" transitions
-            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw ";
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ";
             //Example: I can disclude a character with abc.Replace('a',String.Empty)
 
 
