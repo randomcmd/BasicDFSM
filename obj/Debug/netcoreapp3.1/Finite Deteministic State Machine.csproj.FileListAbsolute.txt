@@ -11,3 +11,16 @@ F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcorea
 F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.dll
 F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.pdb
 F:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.genruntimeconfig.cache
+E:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.exe
+E:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.deps.json
+E:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.runtimeconfig.json
+E:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.runtimeconfig.dev.json
+E:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.dll
+E:\vscode-portable\projects\Finite Deteministic State Machine\bin\Debug\netcoreapp3.1\Finite Deteministic State Machine.pdb
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.csprojAssemblyReference.cache
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.AssemblyInfoInputs.cache
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.AssemblyInfo.cs
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.csproj.CoreCompileInputs.cache
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.dll
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.pdb
+E:\vscode-portable\projects\Finite Deteministic State Machine\obj\Debug\netcoreapp3.1\Finite Deteministic State Machine.genruntimeconfig.cache

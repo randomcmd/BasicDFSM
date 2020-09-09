@@ -20,6 +20,8 @@ namespace Finite_Deteministic_State_Machine
                 if (input.Equals("0")) test0();
                 if (input.Equals("1")) test1();
                 if (input.Equals("2")) test2();
+                if (input.Equals("3")) test3();
+                if (input.Equals("4")) test4();
                 if (input.Equals("exit")) break;
             }
         }
@@ -98,7 +100,7 @@ namespace Finite_Deteministic_State_Machine
             //Example: Creating a state machine that checks if a word contains oop
 
             //We use a string with all letters to loop through the "everything but this letter" transitions
-            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ";
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw ";
             //Example: I can disclude a character with abc.Replace('a',String.Empty)
 
 
@@ -168,6 +170,102 @@ namespace Finite_Deteministic_State_Machine
                 string input = Console.ReadLine();
                 if(input.Equals("exit")) break;
                 Console.WriteLine("The word contains oop and is filtered : " + fdsm.ValidateInput(input));
+            }
+        }
+
+        public static void test3()
+        {
+            //Example: Creating a state machine that checks if a word is a number plate
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw";
+            string numbers = "0123456789";
+
+            FDSM fdsm = new FDSM();
+            fdsm.SetStart("start", StateType.DEFAULT);
+            fdsm.NewState("location0", StateType.DEFAULT);
+            fdsm.NewState("location1", StateType.DEFAULT);
+            fdsm.NewState("location2", StateType.DEFAULT);
+
+            fdsm.NewState("letter0", StateType.DEFAULT);
+            fdsm.NewState("letter1", StateType.DEFAULT);
+
+            fdsm.NewState("numbers0", StateType.ACCEPTED);
+            fdsm.NewState("numbers1", StateType.ACCEPTED);
+            fdsm.NewState("numbers2", StateType.ACCEPTED);
+            fdsm.NewState("numbers3", StateType.ACCEPTED);
+
+            foreach(char c in abc)
+            {
+                //fdsm.AddTransition("","",'');
+                //Basic full number plate transitions
+                fdsm.AddTransition("start","location0",c);
+                fdsm.AddTransition("location0","location1",c);
+                fdsm.AddTransition("location1","location2",c);
+                fdsm.AddTransition("location2","letter0",c);
+                fdsm.AddTransition("letter0","letter1",c);
+            }
+
+            foreach(char c in numbers)
+            {
+                //Basic full number plate transitions
+                fdsm.AddTransition("letter0","numbers0",c);
+                fdsm.AddTransition("letter1","numbers0",c);
+                fdsm.AddTransition("numbers0","numbers1",c);
+                fdsm.AddTransition("numbers1","numbers2",c);
+                fdsm.AddTransition("numbers2","numbers3",c);
+
+                //After two letters you can enter a number and have it be valid
+                fdsm.AddTransition("location1","numbers0",c);
+                fdsm.AddTransition("location2","numbers0",c);
+            }
+
+            //Starting test 
+            Console.WriteLine("This FDSM is meant to replicate a filter for number plates : ");
+            for(;;)
+            {
+                Console.Write("Enter a keyword: ");
+                string input = Console.ReadLine();
+                if(input.Equals("exit")) break;
+                Console.WriteLine("The word contains number plates and is filtered : " + fdsm.ValidateInput(input));
+            }
+        }
+
+        public static void test4()
+        {
+            //Example: Creating a state machine that checks if a word is a number plate
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw";
+            string numbers = "0123456789";
+
+            FDSM fdsm = new FDSM();
+            fdsm.SetStart("z0", StateType.DEFAULT);
+            fdsm.NewState("z1", StateType.DEFAULT);
+            fdsm.NewState("z2", StateType.DEFAULT);
+            fdsm.NewState("z3", StateType.ACCEPTED);
+
+            foreach(char c in "0"){fdsm.AddTransition("z0","z0",c);}
+            foreach(char c in "147"){fdsm.AddTransition("z0","z1",c);}
+            foreach(char c in "369"){fdsm.AddTransition("z0","z3",c);}
+            foreach(char c in "258"){fdsm.AddTransition("z0","z2",c);}
+
+            foreach(char c in "147"){fdsm.AddTransition("z1","z2",c);}
+            foreach(char c in "0369"){fdsm.AddTransition("z1","z1",c);}
+            foreach(char c in "258"){fdsm.AddTransition("z1","z3",c);}
+
+            foreach(char c in "147"){fdsm.AddTransition("z2","z3",c);}
+            foreach(char c in "258"){fdsm.AddTransition("z2","z1",c);}
+            foreach(char c in "0369"){fdsm.AddTransition("z2","z2",c);}
+
+            foreach(char c in "0369"){fdsm.AddTransition("z3","z3",c);}
+            foreach(char c in "147"){fdsm.AddTransition("z3","z1",c);}
+            foreach(char c in "258"){fdsm.AddTransition("z3","z2",c);}
+
+            //Starting test 
+            Console.WriteLine("This FDSM is beans baked beans : ");
+            for(;;)
+            {
+                Console.Write("Enter a keyword: ");
+                string input = Console.ReadLine();
+                if(input.Equals("exit")) break;
+                Console.WriteLine("beans baked beans beans baked beans : " + fdsm.ValidateInput(input));
             }
         }
     }
