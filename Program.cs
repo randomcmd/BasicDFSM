@@ -34,10 +34,10 @@ namespace Finite_Deteministic_State_Machine
             fdsm.NewState("q1", StateType.ACCEPTED);
 
             //Adding transitions between states
-            fdsm.AddTransition("q0","q0",'0');
-            fdsm.AddTransition("q0","q1",'1');
-            fdsm.AddTransition("q1","q0",'0');
-            fdsm.AddTransition("q1","q1",'1');
+            fdsm.AddTransition("q0","q0","0");
+            fdsm.AddTransition("q0","q1","1");
+            fdsm.AddTransition("q1","q0","0");
+            fdsm.AddTransition("q1","q1","1");
 
             //Test cases
             Console.WriteLine("Test case (should be true) : " + fdsm.ValidateInput("00000010101001"));
@@ -66,19 +66,19 @@ namespace Finite_Deteministic_State_Machine
             fdsm.NewState("qF", StateType.DEFAULT);
 
             //Adding transitions between states
-            fdsm.AddTransition("q0","q1",'c');
-            fdsm.AddTransition("q1","q2",'c');
-            fdsm.AddTransition("q2","q3",'c');
-            fdsm.AddTransition("q3","q4",'c');
+            fdsm.AddTransition("q0","q1","c");
+            fdsm.AddTransition("q1","q2","c");
+            fdsm.AddTransition("q2","q3","c");
+            fdsm.AddTransition("q3","q4","c");
             
-            fdsm.AddTransition("q0","q2",'e');
-            fdsm.AddTransition("q1","q3",'e');
-            fdsm.AddTransition("q2","q4",'e');
+            fdsm.AddTransition("q0","q2","e");
+            fdsm.AddTransition("q1","q3","e");
+            fdsm.AddTransition("q2","q4","e");
 
 
-            fdsm.AddTransition("q4","qf",'c');
-            fdsm.AddTransition("q3","qf",'e');
-            fdsm.AddTransition("q4","qf",'e');
+            fdsm.AddTransition("q4","qf","c");
+            fdsm.AddTransition("q3","qf","e");
+            fdsm.AddTransition("q4","qf","e");
 
             //Test cases
             Console.WriteLine("Test case (should be true) : " + fdsm.ValidateInput("cc"));
@@ -100,7 +100,7 @@ namespace Finite_Deteministic_State_Machine
             //Example: Creating a state machine that checks if a word contains oop
 
             //We use a string with all letters to loop through the "everything but this letter" transitions
-            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw ";
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ";
             //Example: I can disclude a character with abc.Replace('a',String.Empty)
 
 
@@ -111,13 +111,13 @@ namespace Finite_Deteministic_State_Machine
             fdsm.NewState("p", StateType.ACCEPTED);
 
             //OOP transitions
-            fdsm.AddTransition("q0","o0",'o');
-            fdsm.AddTransition("o0","o1",'o');
-            fdsm.AddTransition("o1","p",'p');
+            fdsm.AddTransition("q0","o0","o");
+            fdsm.AddTransition("o0","o1","o");
+            fdsm.AddTransition("o1","p","p");
             //Also for the capital letters
-            fdsm.AddTransition("q0","o0",'O');
-            fdsm.AddTransition("o0","o1",'O');
-            fdsm.AddTransition("o1","p",'P');
+            fdsm.AddTransition("q0","o0","O");
+            fdsm.AddTransition("o0","o1","O");
+            fdsm.AddTransition("o1","p","P");
 
             //Now the anything but the letter something transitions
             //We save a lot of work here by using foreach to cycle through the abc string insdead of adding each manually
@@ -128,39 +128,33 @@ namespace Finite_Deteministic_State_Machine
 
             //Console.WriteLine(abcModified);
             //test0();
-            foreach(char c in abcModified)
-            {
-                fdsm.AddTransition("q0","q0",c);
-            }
+                fdsm.AddTransition("q0","q0",abcModified);
+            
 
             //o0 to q0 with anything but o 
             abcModified = abc.Replace("o",String.Empty);
             abcModified = abcModified.Replace("O",String.Empty);
 
-            foreach(char c in abcModified)
-            {
-                fdsm.AddTransition("o0","q0",c);
-            }
+            fdsm.AddTransition("o0","q0",abcModified);
+            
 
-            //o1 to q0 with anything but p , but o is a special case cause double o
+            //o1 to q0 with anything but p , but o is a special case cause double o c
             abcModified = abc.Replace("p",String.Empty);
             abcModified = abcModified.Replace("P",String.Empty);
             abcModified = abcModified.Replace("O",String.Empty);
             abcModified = abcModified.Replace("o",String.Empty);
 
-            foreach(char c in abcModified)
-            {
-                fdsm.AddTransition("o1","q0",c);
-            }
+            fdsm.AddTransition("o1","q0",abcModified);
+            
 
-            fdsm.AddTransition("o1","o1", 'o');
-            fdsm.AddTransition("o1","o1", 'O');
+            fdsm.AddTransition("o1","o1", "o");
+            fdsm.AddTransition("o1","o1", "O");
 
             //p to p with anything
-            foreach(char c in abc)
-            {
-                fdsm.AddTransition("p","p",c);
-            }
+            //foreach(char c in abc)
+            //{
+                fdsm.AddTransition("p","p",abc);
+            //}
 
             //Starting test 
             Console.WriteLine("This FDSM is meant to replicate a spam filter which filters the word 'oop': ");
@@ -176,7 +170,7 @@ namespace Finite_Deteministic_State_Machine
         public static void test3()
         {
             //Example: Creating a state machine that checks if a word is a number plate
-            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw";
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             string numbers = "0123456789";
 
             FDSM fdsm = new FDSM();
@@ -193,30 +187,26 @@ namespace Finite_Deteministic_State_Machine
             fdsm.NewState("numbers2", StateType.ACCEPTED);
             fdsm.NewState("numbers3", StateType.ACCEPTED);
 
-            foreach(char c in abc)
-            {
+            
                 //fdsm.AddTransition("","",'');
                 //Basic full number plate transitions
-                fdsm.AddTransition("start","location0",c);
-                fdsm.AddTransition("location0","location1",c);
-                fdsm.AddTransition("location1","location2",c);
-                fdsm.AddTransition("location2","letter0",c);
-                fdsm.AddTransition("letter0","letter1",c);
-            }
+                fdsm.AddTransition("start","location0",abc);
+                fdsm.AddTransition("location0","location1",abc);
+                fdsm.AddTransition("location1","location2",abc);
+                fdsm.AddTransition("location2","letter0",abc);
+                fdsm.AddTransition("letter0","letter1",abc);
+            
 
-            foreach(char c in numbers)
-            {
                 //Basic full number plate transitions
-                fdsm.AddTransition("letter0","numbers0",c);
-                fdsm.AddTransition("letter1","numbers0",c);
-                fdsm.AddTransition("numbers0","numbers1",c);
-                fdsm.AddTransition("numbers1","numbers2",c);
-                fdsm.AddTransition("numbers2","numbers3",c);
+                fdsm.AddTransition("letter0","numbers0",numbers);
+                fdsm.AddTransition("letter1","numbers0",numbers);
+                fdsm.AddTransition("numbers0","numbers1",numbers);
+                fdsm.AddTransition("numbers1","numbers2",numbers);
+                fdsm.AddTransition("numbers2","numbers3",numbers);
 
                 //After two letters you can enter a number and have it be valid
-                fdsm.AddTransition("location1","numbers0",c);
-                fdsm.AddTransition("location2","numbers0",c);
-            }
+                fdsm.AddTransition("location1","numbers0",numbers);
+                fdsm.AddTransition("location2","numbers0",numbers);
 
             //Starting test 
             Console.WriteLine("This FDSM is meant to replicate a filter for number plates : ");
@@ -232,8 +222,6 @@ namespace Finite_Deteministic_State_Machine
         public static void test4()
         {
             //Example: Creating a state machine that checks if a word is a number plate
-            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw";
-            string numbers = "0123456789";
 
             FDSM fdsm = new FDSM();
             fdsm.SetStart("z0", StateType.DEFAULT);
@@ -241,22 +229,22 @@ namespace Finite_Deteministic_State_Machine
             fdsm.NewState("z2", StateType.DEFAULT);
             fdsm.NewState("z3", StateType.ACCEPTED);
 
-            foreach(char c in "0"){fdsm.AddTransition("z0","z0",c);}
-            foreach(char c in "147"){fdsm.AddTransition("z0","z1",c);}
-            foreach(char c in "369"){fdsm.AddTransition("z0","z3",c);}
-            foreach(char c in "258"){fdsm.AddTransition("z0","z2",c);}
+            fdsm.AddTransition("z0","z0","0");
+            fdsm.AddTransition("z0","z1","147");
+            fdsm.AddTransition("z0","z3","369");
+            fdsm.AddTransition("z0","z2","258");
 
-            foreach(char c in "147"){fdsm.AddTransition("z1","z2",c);}
-            foreach(char c in "0369"){fdsm.AddTransition("z1","z1",c);}
-            foreach(char c in "258"){fdsm.AddTransition("z1","z3",c);}
+            fdsm.AddTransition("z1","z2","147");
+            fdsm.AddTransition("z1","z1","0369");
+            fdsm.AddTransition("z1","z3","258");
 
-            foreach(char c in "147"){fdsm.AddTransition("z2","z3",c);}
-            foreach(char c in "258"){fdsm.AddTransition("z2","z1",c);}
-            foreach(char c in "0369"){fdsm.AddTransition("z2","z2",c);}
+            fdsm.AddTransition("z2","z3","147");
+            fdsm.AddTransition("z2","z1","258");
+            fdsm.AddTransition("z2","z2","0369");
 
-            foreach(char c in "0369"){fdsm.AddTransition("z3","z3",c);}
-            foreach(char c in "147"){fdsm.AddTransition("z3","z1",c);}
-            foreach(char c in "258"){fdsm.AddTransition("z3","z2",c);}
+            fdsm.AddTransition("z3","z3","0369");
+            fdsm.AddTransition("z3","z1","147");
+            fdsm.AddTransition("z3","z2","258");
 
             //Starting test 
             Console.WriteLine("This FDSM is beans baked beans : ");

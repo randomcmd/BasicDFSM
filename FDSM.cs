@@ -22,13 +22,16 @@ public class FDSM
         startState = _state;
     }
     
-    public void AddTransition(string _state0, string _state1, char _input)
+    public void AddTransition(string _state0, string _state1, string _input)
     {
-        State state0;
-        State state1;
-        states.TryGetValue(_state0, out state0);
-        states.TryGetValue(_state1, out state1);
-        state0.AddTransition(_input, state1);
+        foreach(char c in _input)
+        {
+            State state0;
+            State state1;
+            states.TryGetValue(_state0, out state0);
+            states.TryGetValue(_state1, out state1);
+            state0.AddTransition(c, state1);
+        }
     }
 
     public State InternalValidateInput(string _input)
